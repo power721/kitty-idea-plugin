@@ -1,18 +1,41 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.power721.kittyideaplugin</id>
-    <name>kitty-idea-plugin</name>
-    <vendor>power721</vendor>
+    <id>cn.har01d.plugin.kitty</id>
+    <name>Kitty</name>
+    <vendor url="https://har01d.cn" email="power0721@gmail.com">Har01d</vendor>
+    <version>0.0.1</version>
+
+    <description><![CDATA[
+      <p>The cute kitty remind you to take a break after long time work.</p>
+      <ol>
+        <li>In the Tools menu, open Kitty Plugin Setting dialog.</li>
+        <li>Set work time and rest time, and enable it.</li>
+        <li>When the work time elapsed, you have to take a break.</li>
+      </ol>
+      <hr>
+
+      <p>可爱的喵咪提醒你休息一会儿。</p>
+      <ol>
+        <li>在Tool菜单中，打开吸猫插件设置对话框。</li>
+        <li>设置工作时间、休息时间，并启用功能。</li>
+        <li>工作时间结束后，你必须休息一会儿。</li>
+      </ol>
+
+      <p>项目地址:<a href="https://github.com/power721/kitty-idea-plugin">https://github.com/power721/kitty-idea-plugin</p>
+    ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.power721.kittyideaplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.power721.kittyideaplugin.services.MyProjectService"/>
+        <applicationService serviceImplementation="cn.har01d.plugin.kitty.services.KittyApplicationService"/>
+        <notificationGroup id="Kitty Notification Group" displayType="BALLOON"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.power721.kittyideaplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="kitty_setting_id" class="cn.har01d.plugin.kitty.actions.KittySettingAction"
+                description="Kitty guard setting">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+
 </idea-plugin>

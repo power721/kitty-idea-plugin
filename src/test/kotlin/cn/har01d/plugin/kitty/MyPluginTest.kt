@@ -1,4 +1,4 @@
-package com.github.power721.kittyideaplugin
+package cn.har01d.plugin.kitty
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.xml.XmlFile

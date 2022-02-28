@@ -1,4 +1,4 @@
-package com.github.power721.kittyideaplugin
+package cn.har01d.plugin.kitty
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
