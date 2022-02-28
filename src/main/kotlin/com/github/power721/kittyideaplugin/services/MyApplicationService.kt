@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.power721.kittyideaplugin.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.power721.kittyideaplugin.MyBundle
 
 class MyApplicationService {
 
