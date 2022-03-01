@@ -18,7 +18,8 @@ import javax.swing.JDialog
 import javax.swing.JLabel
 import javax.swing.KeyStroke
 
-class KittyDialog(private val service: KittyApplicationService, private val setting: SettingData) : JDialog() {
+class KittyDialog(private val service: KittyApplicationService) : JDialog() {
+    private val setting: SettingData = service.getSettings()
     private lateinit var timerLabel: CellBuilder<JLabel>
     private lateinit var imagePanel: ImagePanel
 
@@ -61,7 +62,7 @@ class KittyDialog(private val service: KittyApplicationService, private val sett
         timerLabel.component.text = text
     }
 
-    fun refresh() {
+    fun refreshAndShow() {
         val image = getImage()
         imagePanel.setImage(image)
         resize(image)
@@ -69,11 +70,11 @@ class KittyDialog(private val service: KittyApplicationService, private val sett
     }
 
     private fun resize(image: BufferedImage) {
-        setSize(image.width, image.height)
+        setSize(image.width, image.height + 100)
     }
 
     private fun getImage(): BufferedImage {
-        return if (setting.remoteImages) {
+        return if (setting.remoteImages && setting.imageApi.isNotEmpty()) {
             ImageIO.read(URL(setting.imageApi))
         } else {
             val id = ThreadLocalRandom.current().nextInt(20) + 1

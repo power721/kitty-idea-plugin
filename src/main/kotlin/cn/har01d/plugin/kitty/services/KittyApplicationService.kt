@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 class KittyApplicationService {
     private val scheduler = Executors.newScheduledThreadPool(2)
     private val setting: SettingData = SettingData()
-    private val dialog: KittyDialog = KittyDialog(this, setting)
+    private val dialog: KittyDialog = KittyDialog(this)
 
     var status: Status = Status.IDLE
 
@@ -47,6 +47,7 @@ class KittyApplicationService {
 
     private fun work() {
         status = Status.WORK
+        notify(message("startWork") + " ${LocalDateTime.now()}")
         workFuture = scheduler.schedule(this::rest, getDelay(), TimeUnit.MILLISECONDS)
     }
 
@@ -56,7 +57,7 @@ class KittyApplicationService {
         countdown = setting.restTime * 60
         restFuture = scheduler.scheduleAtFixedRate(this::countdown, 0, 1, TimeUnit.SECONDS)
         dialog.setTime(countdownToString(countdown))
-        dialog.refresh()
+        dialog.refreshAndShow()
     }
 
     private fun countdown() {
@@ -71,7 +72,7 @@ class KittyApplicationService {
 
     private fun notify(message: String) {
         val notification =
-            NotificationBuilder("Kitty Notification Group", message, NotificationType.INFORMATION).build()
+            NotificationBuilder("Kitty Notifications", message, NotificationType.INFORMATION).build()
         Notifications.Bus.notify(notification)
     }
 
@@ -84,8 +85,6 @@ class KittyApplicationService {
             targetTime - now
         } else {
             delay
-        }.also {
-            notify(message("workTo") + " ${LocalDateTime.now().plusSeconds(it / 1000)}")
         }
     }
 

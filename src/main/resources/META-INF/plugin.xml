@@ -28,12 +28,13 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="cn.har01d.plugin.kitty.services.KittyApplicationService"/>
-        <notificationGroup id="Kitty Notification Group" displayType="BALLOON"/>
+        <notificationGroup id="Kitty Notifications" displayType="BALLOON"/>
     </extensions>
 
     <actions>
         <action id="kitty_setting_id" class="cn.har01d.plugin.kitty.actions.KittySettingAction"
-                description="Kitty guard setting">
+                description="Kitty setting" icon="icons/kitty.svg">
+            <synonym text="Cat Work Time"/>
             <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
     </actions>
