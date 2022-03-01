@@ -47,13 +47,13 @@ class KittyApplicationService {
 
     private fun work() {
         status = Status.WORK
-        notify(message("startWork") + " ${LocalDateTime.now()}")
+        notify(message("message.start.work") + " ${LocalDateTime.now()}")
         workFuture = scheduler.schedule(this::rest, getDelay(), TimeUnit.MILLISECONDS)
     }
 
     private fun rest() {
         status = Status.REST
-        notify(message("restNow") + " ${LocalDateTime.now()}")
+        notify(message("message.rest.now") + " ${LocalDateTime.now()}")
         countdown = setting.restTime * 60
         restFuture = scheduler.scheduleAtFixedRate(this::countdown, 0, 1, TimeUnit.SECONDS)
         dialog.setTime(countdownToString(countdown))

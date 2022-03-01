@@ -20,31 +20,35 @@ class SettingDialog(private val model: SettingData) : DialogWrapper(true) {
 
     override fun createCenterPanel() = panel {
         row {
-            checkBox(message("enabled"), model::enabled, comment = message("enabled.tip"))
+            checkBox(message("setting.enabled"), model::enabled, comment = message("setting.enabled.tip"))
         }
-        titledRow(message("time")) {
-            row(message("workTime")) {
+        titledRow(message("setting.time")) {
+            row(message("setting.work.time")) {
                 cell {
                     spinner(model::workTime, minValue = 5, maxValue = 120, step = 5)
-                    label(message("minute"))
+                    label(message("setting.minute"))
                 }
             }
-            row(message("restTime")) {
+            row(message("setting.rest.time")) {
                 cell {
                     spinner(model::restTime, minValue = 1, maxValue = 20, step = 1)
-                    label(message("minute"))
+                    label(message("setting.minute"))
                 }
             }
         }
-        titledRow(message("imageSource")) {
+        titledRow(message("setting.image.source")) {
             row {
-                comment(message("imageSource.tip"))
+                comment(message("setting.image.source.tip"))
             }
             row {
                 remoteCheckbox =
-                    checkBox(message("remoteImage"), model::remoteImages, comment = message("remoteImageComment"))
+                    checkBox(
+                        message("setting.remote.image"),
+                        model::remoteImages,
+                        comment = message("setting.remote.image.tip")
+                    )
             }
-            row(message("imagesUrl")) {
+            row(message("setting.images.url")) {
                 textField(model::imageApi).enableIf(remoteCheckbox.selected)
             }
         }

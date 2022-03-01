@@ -21,6 +21,7 @@ import javax.swing.KeyStroke
 class KittyDialog(private val service: KittyApplicationService) : JDialog() {
     private val setting: SettingData = service.getSettings()
     private lateinit var timerLabel: CellBuilder<JLabel>
+    private lateinit var remindLabel: CellBuilder<JLabel>
     private lateinit var imagePanel: ImagePanel
 
     init {
@@ -29,8 +30,8 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
         defaultCloseOperation = DO_NOTHING_ON_CLOSE
         contentPane = panel {
             row {
-                label("")
-                label(message("takeBreak"))
+                label(message("message.remind")).withLargeLeftGap()
+                remindLabel = label(getMessage())
             }
             row {
                 val image = getImage()
@@ -39,8 +40,7 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
                 component(imagePanel)
             }
             row {
-                label("")
-                label(message("restTime"))
+                label(message("setting.rest.time")).withLargeLeftGap()
                 timerLabel = label("05:00")
             }
         }
@@ -63,6 +63,7 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
     }
 
     fun refreshAndShow() {
+        remindLabel.component.text = getMessage()
         val image = getImage()
         imagePanel.setImage(image)
         resize(image)
@@ -80,6 +81,15 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
             val id = ThreadLocalRandom.current().nextInt(20) + 1
             val input = KittyDialog::class.java.classLoader.getResourceAsStream("/images/cat$id.jpeg")
             ImageIO.read(input)
+        }
+    }
+
+    private fun getMessage(): String {
+        return when (ThreadLocalRandom.current().nextInt(4)) {
+            1 -> message("message.move")
+            2 -> message("message.drink")
+            3 -> message("message.breathe")
+            else -> message("message.rest")
         }
     }
 
