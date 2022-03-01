@@ -70,7 +70,7 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
     }
 
     private fun resize(image: BufferedImage) {
-        setSize(image.width, image.height + 100)
+        setSize(image.width, image.height + 120)
     }
 
     private fun getImage(): BufferedImage {

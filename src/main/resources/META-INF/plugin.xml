@@ -33,9 +33,10 @@
 
     <actions>
         <action id="kitty_setting_id" class="cn.har01d.plugin.kitty.actions.KittySettingAction"
-                description="Kitty setting" icon="icons/kitty.svg">
+                description="Kitty setting" icon="/icons/kitty.svg">
             <synonym text="Cat Work Time"/>
             <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
         </action>
     </actions>
 
