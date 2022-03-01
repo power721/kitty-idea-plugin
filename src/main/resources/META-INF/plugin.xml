@@ -5,34 +5,6 @@
     <vendor url="https://har01d.cn" email="power0721@gmail.com">Har01d</vendor>
     <version>0.0.1</version>
 
-    <description><![CDATA[
-      <p>The cute kitty remind you to take a break after long time work.</p>
-      <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a>
-      <ol>
-        <li>In the Tools menu, open Kitty Plugin Setting dialog.</li>
-        <li>Set work time and rest time, and enable it.</li>
-        <li>When the work time elapsed, you have to take a break.</li>
-      </ol>
-      <hr>
-
-      <p>可爱的喵咪提醒你休息一会儿。</p>
-      <a href="https://zh.wikipedia.org/wiki/%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95">番茄工作法</a>
-      <ol>
-        <li>在Tool菜单中，打开吸猫插件设置对话框。</li>
-        <li>设置工作时间、休息时间，并启用功能。</li>
-        <li>工作时间结束后，你必须休息一会儿。</li>
-      </ol>
-
-      <p>项目地址:<a href="https://github.com/power721/kitty-idea-plugin">https://github.com/power721/kitty-idea-plugin</p>
-    ]]></description>
-
-    <change-notes><![CDATA[
-      <ul>
-        <li>0.0.1 release.</li>
-      </ul>
-    ]]>
-    </change-notes>
-
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">

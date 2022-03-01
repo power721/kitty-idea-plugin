@@ -81,7 +81,7 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
             ImageIO.read(URL(setting.imageApi))
         } else {
             val id = ThreadLocalRandom.current().nextInt(20) + 1
-            val input = KittyDialog::class.java.classLoader.getResourceAsStream("/images/cat$id.jpeg")
+            val input = KittyDialog::class.java.classLoader.getResourceAsStream("images/cat$id.jpeg")
             ImageIO.read(input)
         }
     }

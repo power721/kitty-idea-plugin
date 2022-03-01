@@ -15,11 +15,22 @@
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
-
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
-
-To keep everything working, do not remove `<!-- ... -->` sections. 
+<p>The cute kitty remind you to take a break after long time work.</p>
+      <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro Technique</a>
+      <ol>
+        <li>In the Tools menu, open Kitty Plugin Setting dialog.</li>
+        <li>Set work time and rest time, and enable it.</li>
+        <li>When the work time elapsed, you have to take a break.</li>
+      </ol>
+      <hr>
+      <p>可爱的喵咪提醒你休息一会儿。</p>
+      <a href="https://zh.wikipedia.org/wiki/%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95">番茄工作法</a>
+      <ol>
+        <li>在Tools菜单中，打开吸猫插件设置对话框。</li>
+        <li>设置工作时间、休息时间，并启用功能。</li>
+        <li>工作时间结束后，你必须休息一会儿。</li>
+      </ol>
+      <p>项目地址:<a href="https://github.com/power721/kitty-idea-plugin">https://github.com/power721/kitty-idea-plugin</p>
 <!-- Plugin description end -->
 
 ## Installation
