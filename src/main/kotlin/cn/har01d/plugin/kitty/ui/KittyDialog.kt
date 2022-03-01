@@ -30,7 +30,8 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
         defaultCloseOperation = DO_NOTHING_ON_CLOSE
         contentPane = panel {
             row {
-                label(message("message.remind")).withLargeLeftGap()
+                placeholder().withLargeLeftGap()
+                label(message("message.remind"))
                 remindLabel = label(getMessage())
             }
             row {
@@ -40,7 +41,8 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
                 component(imagePanel)
             }
             row {
-                label(message("setting.rest.time")).withLargeLeftGap()
+                placeholder().withLargeLeftGap()
+                label(message("setting.rest.time"))
                 timerLabel = label("05:00")
             }
         }
