@@ -6,9 +6,7 @@ import cn.har01d.plugin.kitty.services.KittyApplicationService
 import cn.har01d.plugin.kitty.services.Status
 import com.intellij.ui.layout.CellBuilder
 import com.intellij.ui.layout.panel
-import java.awt.event.KeyEvent
-import java.awt.event.WindowAdapter
-import java.awt.event.WindowEvent
+import java.awt.event.*
 import java.awt.image.BufferedImage
 import java.net.URL
 import java.util.concurrent.ThreadLocalRandom
@@ -54,6 +52,12 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
             }
         })
 
+        imagePanel.addMouseListener(object : MouseAdapter() {
+            override fun mouseClicked(e: MouseEvent?) {
+                refresh()
+            }
+        })
+
         rootPane.registerKeyboardAction(
             { onCancel() },
             KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
@@ -65,11 +69,15 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
         timerLabel.component.text = text
     }
 
-    fun refreshAndShow() {
-        remindLabel.component.text = getMessage()
+    fun refresh() {
         val image = getImage()
         imagePanel.setImage(image)
         resize(image)
+    }
+
+    fun refreshAndShow() {
+        refresh()
+        remindLabel.component.text = getMessage()
         isVisible = true
     }
 

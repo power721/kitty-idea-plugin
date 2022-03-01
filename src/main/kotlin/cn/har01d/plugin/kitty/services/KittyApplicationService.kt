@@ -92,10 +92,10 @@ class KittyApplicationService {
         val now = System.currentTimeMillis()
         val delay = TimeUnit.MINUTES.toMillis(setting.workTime.toLong())
         val targetTime = lastWorkTime + delay
-        lastWorkTime = now
         return if (targetTime > now) {
             targetTime - now
         } else {
+            lastWorkTime = now
             delay
         }
     }

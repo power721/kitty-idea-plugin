@@ -10,7 +10,6 @@ import com.intellij.ui.layout.CellBuilder
 import com.intellij.ui.layout.panel
 import com.intellij.ui.layout.selected
 
-
 class SettingDialog(private val service: KittyApplicationService) : DialogWrapper(true) {
     private val setting: SettingData = service.getSettings()
     private lateinit var remoteCheckbox: CellBuilder<JBCheckBox>
