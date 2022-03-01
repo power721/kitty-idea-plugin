@@ -28,6 +28,7 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
         title = message("kitty.dialog.name")
         isModal = true
         defaultCloseOperation = DO_NOTHING_ON_CLOSE
+        setLocation(500, 400)
         contentPane = panel {
             row {
                 placeholder().withLargeLeftGap()

@@ -13,6 +13,7 @@ import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
 
 class KittyApplicationService {
+    private val propertiesComponent: PropertiesComponent = PropertiesComponent.getInstance()
     private val scheduler = Executors.newScheduledThreadPool(2)
     private val setting: SettingData = SettingData()
     private val dialog: KittyDialog = KittyDialog(this)
@@ -25,14 +26,14 @@ class KittyApplicationService {
     private var countdown: Int = 60
 
     init {
-        PropertiesComponent.getInstance().loadFields(setting)
+        propertiesComponent.loadFields(setting)
         start()
     }
 
     fun getSettings(): SettingData = setting
 
     fun saveSettings() {
-        PropertiesComponent.getInstance().saveFields(setting)
+        propertiesComponent.saveFields(setting)
         start()
     }
 
