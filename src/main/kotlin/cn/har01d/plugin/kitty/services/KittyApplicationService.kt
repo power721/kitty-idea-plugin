@@ -7,7 +7,9 @@ import com.intellij.ide.util.PropertiesComponent
 import com.intellij.notification.NotificationBuilder
 import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
+import java.time.Instant
 import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
@@ -34,15 +36,24 @@ class KittyApplicationService {
 
     fun saveSettings() {
         propertiesComponent.saveFields(setting)
-        start()
     }
 
-    private fun start() {
+    fun start() {
         restFuture?.cancel(true)
         workFuture?.cancel(true)
         status = Status.IDLE
         if (setting.enabled) {
             work()
+        }
+    }
+
+    fun getNextRestTime(): LocalDateTime {
+        return if (lastWorkTime > 0) {
+            val time = lastWorkTime + TimeUnit.MINUTES.toMillis(setting.workTime.toLong())
+            val instant = Instant.ofEpochSecond(time / 1000)
+            LocalDateTime.ofInstant(instant, ZoneOffset.systemDefault())
+        } else {
+            LocalDateTime.now().plusMinutes(setting.workTime.toLong())
         }
     }
 
@@ -82,7 +93,7 @@ class KittyApplicationService {
         val delay = TimeUnit.MINUTES.toMillis(setting.workTime.toLong())
         val targetTime = lastWorkTime + delay
         lastWorkTime = now
-        return if (targetTime - now > 1000L) {
+        return if (targetTime > now) {
             targetTime - now
         } else {
             delay

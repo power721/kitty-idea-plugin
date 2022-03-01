@@ -10,9 +10,10 @@ import com.intellij.openapi.application.ApplicationManager
 class KittySettingAction : AnAction(message("name")) {
     override fun actionPerformed(e: AnActionEvent) {
         val applicationService = ApplicationManager.getApplication().getService(KittyApplicationService::class.java)
-        val dialog = SettingDialog(applicationService.getSettings())
+        val dialog = SettingDialog(applicationService)
         if (dialog.showAndGet()) {
             applicationService.saveSettings()
+            applicationService.start()
         }
     }
 }
