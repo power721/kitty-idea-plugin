@@ -4,19 +4,23 @@ import cn.har01d.plugin.kitty.MyBundle.message
 import cn.har01d.plugin.kitty.model.SettingData
 import cn.har01d.plugin.kitty.ui.KittyDialog
 import com.intellij.ide.util.PropertiesComponent
-import com.intellij.notification.NotificationBuilder
+import com.intellij.notification.Notification
+import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
-import com.intellij.notification.Notifications
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
 
 class KittyApplicationService {
     private val propertiesComponent: PropertiesComponent = PropertiesComponent.getInstance()
-    private val scheduler = Executors.newScheduledThreadPool(2)
+    private val notificationGroup: NotificationGroup =
+        NotificationGroupManager.getInstance().getNotificationGroup("Kitty Notifications")
+    private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(2)
     private val setting: SettingData = SettingData()
     private val dialog: KittyDialog = KittyDialog(this)
 
@@ -83,9 +87,8 @@ class KittyApplicationService {
     }
 
     private fun notify(message: String) {
-        val notification =
-            NotificationBuilder("Kitty Notifications", message, NotificationType.INFORMATION).build()
-        Notifications.Bus.notify(notification)
+        val notification: Notification = notificationGroup.createNotification(message, NotificationType.INFORMATION)
+        notification.notify(null)
     }
 
     private fun getDelay(): Long {

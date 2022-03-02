@@ -3,7 +3,7 @@
     <id>cn.har01d.plugin.kitty</id>
     <name>Kitty</name>
     <vendor url="https://har01d.cn" email="power0721@gmail.com">Har01d</vendor>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <depends>com.intellij.modules.platform</depends>
 
