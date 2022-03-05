@@ -2,7 +2,7 @@
 
 # kitty-idea-plugin Changelog
 
-## [0.0.3]
+## [Unreleased]
 
 - Auto start service
 
