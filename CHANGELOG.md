@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+- Support IDEA 2022.1
+
+## [0.0.3]
+
 - Auto start service
 
 ## [0.0.2]
