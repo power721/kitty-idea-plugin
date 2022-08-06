@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+## [0.0.5]
+Support IDEA 2022.2
+
 ## [0.0.4]
 - Support IDEA 2022.1
 
