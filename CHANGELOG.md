@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+## [0.0.6] - 2023-01-08
+Support IDEA 2022.3
+
 ## [0.0.5]
 Support IDEA 2022.2
 
@@ -19,3 +22,11 @@ Support IDEA 2022.2
 ## [0.0.1]
 - Initial scaffold created
   from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+
+[Unreleased]: null/compare/v0.0.6...HEAD
+[0.0.6]: null/compare/v0.0.5...v0.0.6
+[0.0.5]: null/compare/v0.0.4...v0.0.5
+[0.0.4]: null/compare/v0.0.3...v0.0.4
+[0.0.3]: null/compare/v0.0.2...v0.0.3
+[0.0.2]: null/compare/v0.0.1...v0.0.2
+[0.0.1]: null/commits/v0.0.1
