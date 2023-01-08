@@ -6,13 +6,11 @@ import cn.har01d.plugin.kitty.services.KittyApplicationService
 import cn.har01d.plugin.kitty.services.Status
 import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.ui.components.JBCheckBox
-import com.intellij.ui.layout.CellBuilder
-import com.intellij.ui.layout.panel
-import com.intellij.ui.layout.selected
+import com.intellij.ui.dsl.builder.*
 
 class SettingDialog(private val service: KittyApplicationService) : DialogWrapper(true) {
     private val setting: SettingData = service.getSettings()
-    private lateinit var remoteCheckbox: CellBuilder<JBCheckBox>
+    private lateinit var remoteCheckbox: Cell<JBCheckBox>
 
     init {
         title = message("setting.dialog.name")
@@ -22,36 +20,34 @@ class SettingDialog(private val service: KittyApplicationService) : DialogWrappe
 
     override fun createCenterPanel() = panel {
         row {
-            checkBox(message("setting.enabled"), setting::enabled, comment = message("setting.enabled.tip"))
+            checkBox(message("setting.enabled"))
+                .comment(message("setting.enabled.tip"))
+                .bindSelected(setting::enabled)
         }
-        titledRow(message("setting.time")) {
+        group(message("setting.time")) {
             row(message("setting.work.time")) {
-                cell {
-                    spinner(setting::workTime, minValue = 5, maxValue = 120, step = 5)
+                    spinner(5..120, 5).bindIntValue(setting::workTime)
                     label(message("setting.minute"))
-                }
             }
             row(message("setting.rest.time")) {
-                cell {
-                    spinner(setting::restTime, minValue = 1, maxValue = 20, step = 1)
+                    spinner(1..20).bindIntValue(setting::restTime)
                     label(message("setting.minute"))
-                }
             }
         }
-        titledRow(message("setting.image.source")) {
+        group(message("setting.image.source")) {
             row {
                 comment(message("setting.image.source.tip"))
             }
             row {
                 remoteCheckbox =
-                    checkBox(
-                        message("setting.remote.image"),
-                        setting::remoteImages,
-                        comment = message("setting.remote.image.tip")
-                    )
+                    checkBox(message("setting.remote.image"))
+                        .comment(message("setting.remote.image.tip"))
+                        .bindSelected(setting::remoteImages)
             }
             row(message("setting.images.url")) {
-                textField(setting::imageApi).enableIf(remoteCheckbox.selected)
+                textField()
+                    .enabledIf(remoteCheckbox.selected)
+                    .bindText(setting::imageApi)
             }
         }
         if (service.status == Status.WORK) {

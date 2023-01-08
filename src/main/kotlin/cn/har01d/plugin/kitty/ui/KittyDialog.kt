@@ -4,8 +4,9 @@ import cn.har01d.plugin.kitty.MyBundle.message
 import cn.har01d.plugin.kitty.model.SettingData
 import cn.har01d.plugin.kitty.services.KittyApplicationService
 import cn.har01d.plugin.kitty.services.Status
-import com.intellij.ui.layout.CellBuilder
-import com.intellij.ui.layout.panel
+import com.intellij.ui.dsl.builder.Cell
+import com.intellij.ui.dsl.builder.panel
+import com.intellij.ui.dsl.gridLayout.Gaps
 import java.awt.event.*
 import java.awt.image.BufferedImage
 import java.net.URL
@@ -18,8 +19,8 @@ import javax.swing.KeyStroke
 
 class KittyDialog(private val service: KittyApplicationService) : JDialog() {
     private val setting: SettingData = service.getSettings()
-    private lateinit var timerLabel: CellBuilder<JLabel>
-    private lateinit var remindLabel: CellBuilder<JLabel>
+    private lateinit var timerLabel: Cell<JLabel>
+    private lateinit var remindLabel: Cell<JLabel>
     private lateinit var imagePanel: ImagePanel
 
     init {
@@ -29,19 +30,17 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
         setLocation(500, 400)
         contentPane = panel {
             row {
-                placeholder().withLargeLeftGap()
-                label(message("message.remind"))
+                label(message("message.remind")).customize(Gaps(left = 16))
                 remindLabel = label(getMessage())
             }
             row {
                 val image = getImage()
                 resize(image)
                 imagePanel = ImagePanel(image)
-                component(imagePanel)
+                cell(imagePanel)
             }
             row {
-                placeholder().withLargeLeftGap()
-                label(message("setting.rest.time"))
+                label(message("setting.rest.time")).customize(Gaps(left = 16))
                 timerLabel = label("05:00")
             }
         }
