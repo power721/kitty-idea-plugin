@@ -17,6 +17,7 @@ https://plugins.jetbrains.com/plugin/18706-kitty
   <li>In the Tools menu, open Kitty Plugin Setting dialog.</li>
   <li>Set work time and rest time, and enable it.</li>
   <li>When the work time elapsed, you have to take a break.</li>
+  <li>Tip: Click the image to switch image.</li>
 </ol>
 <hr>
 <p>可爱的喵咪提醒你休息一会儿。</p>
@@ -25,6 +26,7 @@ https://plugins.jetbrains.com/plugin/18706-kitty
   <li>在Tools菜单中，打开吸猫插件设置对话框。</li>
   <li>设置工作时间、休息时间，并启用功能。</li>
   <li>工作时间结束后，你必须休息一会儿。</li>
+  <li>小提示：点击图片，切换图片。</li>
 </ol>
 <p>项目地址: <a href="https://github.com/power721/kitty-idea-plugin">https://github.com/power721/kitty-idea-plugin</a></p>
 <!-- Plugin description end -->
