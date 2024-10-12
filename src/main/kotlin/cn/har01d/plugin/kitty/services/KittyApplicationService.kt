@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 class KittyApplicationService {
     private val propertiesComponent: PropertiesComponent = PropertiesComponent.getInstance()
     private val notificationGroup: NotificationGroup =
-            NotificationGroupManager.getInstance().getNotificationGroup("Kitty Notifications")
+        NotificationGroupManager.getInstance().getNotificationGroup("Kitty Notifications")
     private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(2)
     private val setting: SettingData = SettingData()
     private val dialog: KittyDialog = KittyDialog(this)
@@ -78,6 +78,13 @@ class KittyApplicationService {
         restFuture = scheduler.scheduleAtFixedRate(this::countdown, 0, 1, TimeUnit.SECONDS)
         dialog.setTime(countdownToString(countdown))
         dialog.refreshAndShow()
+    }
+
+    fun extend(minutes: Long) {
+        dialog.dispose()
+        restFuture?.cancel(true)
+        status = Status.WORK
+        workFuture = scheduler.schedule(this::rest, minutes, TimeUnit.MINUTES)
     }
 
     private fun countdown() {

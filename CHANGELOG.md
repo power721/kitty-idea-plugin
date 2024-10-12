@@ -3,6 +3,7 @@
 # kitty-idea-plugin Changelog
 
 ## [Unreleased]
+Continue work 5 minutes
 
 ## [0.0.8] - 2023-05-31
 Support local image folder

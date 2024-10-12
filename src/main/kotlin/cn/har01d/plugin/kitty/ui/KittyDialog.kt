@@ -5,7 +5,7 @@ import cn.har01d.plugin.kitty.model.SettingData
 import cn.har01d.plugin.kitty.services.KittyApplicationService
 import com.intellij.ui.dsl.builder.Cell
 import com.intellij.ui.dsl.builder.panel
-import com.intellij.ui.dsl.gridLayout.Gaps
+import com.intellij.ui.dsl.gridLayout.UnscaledGaps
 import java.awt.event.*
 import java.awt.image.BufferedImage
 import java.io.File
@@ -29,8 +29,11 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
         setLocation(500, 400)
         contentPane = panel {
             row {
-                label(message("message.remind")).customize(Gaps(left = 16))
+                label(message("message.remind")).customize(UnscaledGaps(left = 16))
                 remindLabel = label(getMessage())
+                button(message("message.extend")) {
+                    service.extend(5)
+                }.customize(UnscaledGaps(left = 16))
             }
             row {
                 val image = getImage()
@@ -39,7 +42,7 @@ class KittyDialog(private val service: KittyApplicationService) : JDialog() {
                 cell(imagePanel)
             }
             row {
-                label(message("setting.rest.time")).customize(Gaps(left = 16))
+                label(message("setting.rest.time")).customize(UnscaledGaps(left = 16))
                 timerLabel = label("05:00")
             }
         }
