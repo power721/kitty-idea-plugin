@@ -7,7 +7,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <preloadingActivity implementation="cn.har01d.plugin.kitty.services.KittyPreloadingActivity"/>
+        <startupActivity implementation="cn.har01d.plugin.kitty.services.KittyPreloadingActivity"/>
         <applicationService serviceImplementation="cn.har01d.plugin.kitty.services.KittyApplicationService"/>
         <notificationGroup id="Kitty Notifications" displayType="BALLOON"/>
     </extensions>
