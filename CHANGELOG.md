@@ -3,6 +3,8 @@
 # kitty-idea-plugin Changelog
 
 ## [Unreleased]
+
+## [0.1.1] - 2024-10-19
 Continue work 5 minutes
 
 ## [0.0.8] - 2023-05-31
@@ -30,7 +32,8 @@ Support IDEA 2022.2
 - Initial scaffold created
   from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/JetBrains/intellij-platform-plugin-template/compare/v0.0.8...HEAD
+[Unreleased]: https://github.com/JetBrains/intellij-platform-plugin-template/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/JetBrains/intellij-platform-plugin-template/compare/v0.0.8...v0.1.1
 [0.0.8]: https://github.com/JetBrains/intellij-platform-plugin-template/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/JetBrains/intellij-platform-plugin-template/compare/v0.0.6...v0.0.7
 [0.0.6]: null/compare/v0.0.5...v0.0.6
